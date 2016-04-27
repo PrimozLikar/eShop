@@ -1,0 +1,27 @@
+<nav>
+    <!-- Navbar -->
+    <ul>
+        <li>
+        <a ui-sref="home">Home</a>
+        </li>
+        <li>
+        <a ui-sref="login">Log In</a></li>
+        <li>
+        <a ui-sref="products">Products</a></li>
+        <li>
+        <a ui-sref="about">About us</a></li>
+        <li>
+        <a ui-sref="profile">Profile</a></li>
+        <li>
+
+        <!-- Linking to nested state -->
+        <a ui-sref="profile.setup">Profile settings</a></li>
+        <li>
+        <a ui-sref="profile.cart">Cart</a></li><li>
+
+        <!-- Linking to a state with added parameters -->
+        <a ui-sref="parameter({name: 'Bob'})">Go to state and pass Bob</a>
+        </li>
+
+    </ul>
+</nav>
