@@ -1,6 +1,6 @@
 {
-  "name": "eShop",
-  "description": "eShop",
+  "name": "eshop",
+  "description": "eshop Primoz",
   "main": "gulpfile.js",
   "keywords": [
     "eshop",
@@ -21,6 +21,7 @@
   "dependencies": {
     "angular": "^1.5.5",
     "bootstrap": "v3.3.6",
-    "angular-ui-router": "^0.2.18"
+    "angular-ui-router": "^0.2.18",
+	"angular-ui-bootstrap": "v1.7.9"
   }
 }
