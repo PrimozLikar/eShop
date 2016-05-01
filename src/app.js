@@ -1,5 +1,5 @@
 //  Add ui-router as a dependency
-var app = angular.module('app', ['ui.router']);
+var app = angular.module('app', ['ui.router', 'ui.bootstrap']);
 
 app.controller('isActiveController', function($scope, $location){
 
