@@ -1,10 +1,8 @@
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="spletna stran podjetja XY" />
-    <meta name="keywords" content="Liki,spletno poslovanje,nakupi,morski prašički" />
-    <meta name="author" content="Primoz">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+	<meta name="description" content="spletna stran podjetja XY" />
+	<meta name="keywords" content="Liki,spletno poslovanje,nakupi,morski prašički" />
+	<meta name="author" content="PrimozL">
     <title>eShop</title>
 
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -12,24 +10,37 @@
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="../bower_components/angular-ui-bootstrap/release/ui-bootstrap-tpls-1.3.2.js"></script>
-    <script src="./js/all.js"></script>
 
+	<script src="./js/all.js"></script>
+   
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
 <body ng-app="app">
-	<header>
-		<h1>Dobrodošli    Wilkommen    Welcome</h1>
-	</header>
-   
-    <main-navigation> </main-navigation>
-    
-    <ui-view>
+
+    <div class="container-fluid">
+	
+        <header class="col-sm-8 col-sm-offset-2">
+            <h1>Dobrodošli    Wilkommen    Welcome</h1>
+        </header>
+
+        <div class="col-sm-8 col-sm-offset-2"> 
+            <main-navigation> </main-navigation>
+        </div>
+
+        <div class="col-sm-8 col-sm-offset-2"> 
+            <ui-view>
+
+            </ui-view>
+        </div>
+
+        <footer class="col-sm-8 col-sm-offset-2">
+            <h2>Footer</h2>
+        </footer>
         
-    </ui-view>
+        
+
     
-    <footer>
-        <h2>Footer</h2>
-    </footer>
+    </div>
 </body>
