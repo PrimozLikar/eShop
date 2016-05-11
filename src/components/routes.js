@@ -1,18 +1,24 @@
 app.config(function($stateProvider, $urlRouterProvider){
 
     //  If a user goes to an url that doesn't have a valid state assigned
-	$urlRouterProvider.otherwise('/error');
+	$urlRouterProvider.otherwise('/');
 
-	$stateProvider.state('error',
-	{
-		url: '/error',
-		template: '<h2>Error 404</h2>'
-	});
-    
 	$stateProvider.state('home',
 	{
 		url: '/',
-		template: '<h1>Domas smo</h1>'
+		template: '<h1>Doma smo</h1>'
+	});
+    
+    $stateProvider.state('error',
+	{
+		url: '/error',
+		template: '<h2>Error 404 al neki</h2>'
+	});
+    
+	$stateProvider.state('categories',
+	{
+		url: '/categories',
+		template: '<h1>Categories</h1>'
 	});
     
 	$stateProvider.state('products',
@@ -44,7 +50,6 @@ app.config(function($stateProvider, $urlRouterProvider){
 		url: '/setup',
 		template: '<div class="well"><h4>Profile Settings</h4></div>'
 	})
-
     
 	$stateProvider.state('profile.cart', 
 	{

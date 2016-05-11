@@ -8,49 +8,27 @@ app.controller('isActiveController', function($scope, $location){
 	};
 
 });
-app.directive('mainNavigation', function(){
-
-	return{
-      restrict:'EA',
-      templateUrl:'templates/navigation.html',
-        controller:'isActiveController'
-    };
-
-});
-
-
-app.controller('DropdownCtrl', function ($scope, $log) {
-$scope.status = {
-    isopen: false
-  };
-/*
-  $scope.toggled = function(open) {
-    $log.log('Dropdown is now: ', open);
-  };
-
-  $scope.toggleDropdown = function($event) {
-    $event.preventDefault();
-    $event.stopPropagation();
-    $scope.status.isopen = !$scope.status.isopen;
-  };
-  */  
-    
-});
 app.config(function($stateProvider, $urlRouterProvider){
 
     //  If a user goes to an url that doesn't have a valid state assigned
-	$urlRouterProvider.otherwise('/error');
+	$urlRouterProvider.otherwise('/');
 
-	$stateProvider.state('error',
-	{
-		url: '/error',
-		template: '<h2>Error 404</h2>'
-	});
-    
 	$stateProvider.state('home',
 	{
 		url: '/',
-		template: '<h1>Domas smo</h1>'
+		template: '<h1>Doma smo</h1>'
+	});
+    
+    $stateProvider.state('error',
+	{
+		url: '/error',
+		template: '<h2>Error 404 al neki</h2>'
+	});
+    
+	$stateProvider.state('categories',
+	{
+		url: '/categories',
+		template: '<h1>Categories</h1>'
 	});
     
 	$stateProvider.state('products',
@@ -82,7 +60,6 @@ app.config(function($stateProvider, $urlRouterProvider){
 		url: '/setup',
 		template: '<div class="well"><h4>Profile Settings</h4></div>'
 	})
-
     
 	$stateProvider.state('profile.cart', 
 	{
@@ -110,4 +87,33 @@ app.config(function($stateProvider, $urlRouterProvider){
 	});
 
 });
+
+
+angular.module('app').factory('CategoryFactory', function ($resource) {
+
+    return $resource('http://smartninja.betoo.si/api/eshop/categories');
+    
+});
+app.directive('mainCategories', function(){
+
+	return{
+      restrict:'EA',
+      templateUrl:'templates/main.categories.html',
+      controller:'isActiveController' 
+    };
+
+});
+
+
+
+app.directive('mainNavigation', function(){
+
+	return{
+      restrict:'EA',
+      templateUrl:'templates/main.navigation.html',
+      controller:'isActiveController' 
+    };
+
+});
+
 

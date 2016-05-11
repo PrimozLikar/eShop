@@ -1,0 +1,7 @@
+    <div class="navbar navbar-inverse" ng-controller="isActiveController">
+        <ul class="nav navbar-nav" >
+            <li ng-class="{ active: isActive('/Categories')}"><a ui-sref="categories">Categories</a></li>
+            <li ng-class="{ active: isActive('/products')}"><a ui-sref="products">Products</a></li>
+            <li ng-class="{ active: isActive('/profile')}"><a ui-sref="profile">Profile</a></li>
+        </ul>
+    </div>
