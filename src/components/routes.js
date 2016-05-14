@@ -18,7 +18,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 	$stateProvider.state('categories',
 	{
 		url: '/categories',
-		template: '<h1>Categories</h1>'
+		templateUrl: 'templates/main.categories.html'
 	});
     
 	$stateProvider.state('products',

@@ -28,7 +28,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 	$stateProvider.state('categories',
 	{
 		url: '/categories',
-		template: '<h1>Categories</h1>'
+		templateUrl: 'templates/main.categories.html'
 	});
     
 	$stateProvider.state('products',
@@ -89,7 +89,10 @@ app.config(function($stateProvider, $urlRouterProvider){
 });
 
 
-angular.module('app').factory('CategoryFactory', function ($resource) {
+app.controller('categoryController', function ($scope, CategoryFactory) {
+          $scope.categories = CategoryFactory.query({});
+});
+app.factory('CategoryFactory', function ($resource) {
 
     return $resource('http://smartninja.betoo.si/api/eshop/categories');
     
@@ -98,8 +101,8 @@ app.directive('mainCategories', function(){
 
 	return{
       restrict:'EA',
-      templateUrl:'templates/category.html',
-      controller:'isActiveController' 
+      templateUrl:'templates/main.categories.html',
+      controller:'categoryController' 
     };
 
 });
