@@ -2,7 +2,7 @@ app.directive('mainCategories', function(){
 
 	return{
       restrict:'EA',
-      templateUrl:'templates/main.categories.html',
+      templateUrl:'templates/category.html',
       controller:'isActiveController' 
     };
 

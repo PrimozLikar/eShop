@@ -1,5 +1,5 @@
 //  Add ui-router as a dependency
-var app = angular.module('app', ['ui.router', 'ui.bootstrap']);
+var app = angular.module('app', ['ui.router', 'ui.bootstrap', 'ngResource']);
 
 app.controller('isActiveController', function($scope, $location){
 
@@ -98,7 +98,7 @@ app.directive('mainCategories', function(){
 
 	return{
       restrict:'EA',
-      templateUrl:'templates/main.categories.html',
+      templateUrl:'templates/category.html',
       controller:'isActiveController' 
     };
 
