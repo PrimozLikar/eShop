@@ -5,7 +5,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 
 	$stateProvider.state('home',
 	{
-		url: '/',
+		url: '/home',
 		template: '<h1>Doma smo</h1>'
 	});
     
@@ -24,9 +24,17 @@ app.config(function($stateProvider, $urlRouterProvider){
 	$stateProvider.state('products',
 	{
 		url: '/products',
-		template: '<h1>Products</h1>'
+		templateUrl: 'templates/products.html',
+        controller: 'productsController'
 	});
-    	
+    
+    $stateProvider.state('detail',
+	{
+		url: '/products/:id',
+		templateUrl: 'templates/product.html',
+        controller: 'productController'
+	});
+    
     $stateProvider.state('about',
 	{
 		url: '/about',

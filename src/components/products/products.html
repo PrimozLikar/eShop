@@ -1,0 +1,4 @@
+<div class="well" ng-repeat="product in products">
+    <p>{{ product.name }}</p>
+    <a ui-sref="detail({id: product.id})">Open detail view</a>
+</div>

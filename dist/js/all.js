@@ -15,7 +15,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 
 	$stateProvider.state('home',
 	{
-		url: '/',
+		url: '/home',
 		template: '<h1>Doma smo</h1>'
 	});
     
@@ -34,9 +34,17 @@ app.config(function($stateProvider, $urlRouterProvider){
 	$stateProvider.state('products',
 	{
 		url: '/products',
-		template: '<h1>Products</h1>'
+		templateUrl: 'templates/products.html',
+        controller: 'productsController'
 	});
-    	
+    
+    $stateProvider.state('detail',
+	{
+		url: '/products/:id',
+		templateUrl: 'templates/product.html',
+        controller: 'productController'
+	});
+    
     $stateProvider.state('about',
 	{
 		url: '/about',
@@ -120,3 +128,29 @@ app.directive('mainNavigation', function(){
 });
 
 
+
+app.controller('productController', function ($scope, ProductFactory, $stateParams) {
+    $scope.product = ProductFactory.getProduct($stateParams.id);
+});
+angular.module('app').factory('ProductFactory', 
+
+function ($resource) {
+
+    return {
+        getProducts:getProducts,
+        getProduct:getProduct
+    }
+    
+    function getProducts(){
+        return $resource('http://smartninja.betoo.si/api/eshop/products').query({});
+    };
+    
+    
+    function getProduct(){
+        return $resource('http://smartninja.betoo.si/api/eshop/products/' + '1').query({});
+    };
+    
+});
+app.controller('productsController', function ($scope, ProductFactory) {
+          $scope.products = ProductFactory.getProducts();
+});
