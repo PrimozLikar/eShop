@@ -12,8 +12,8 @@ function ($resource) {
     };
     
     
-    function getProduct(){
-        return $resource('http://smartninja.betoo.si/api/eshop/products/' + '1').query({});
+    function getProduct(id){
+        return $resource('http://smartninja.betoo.si/api/eshop/products/' + id.toString()).get({});
     };
     
 });
