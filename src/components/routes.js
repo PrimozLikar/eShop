@@ -15,10 +15,11 @@ app.config(function($stateProvider, $urlRouterProvider){
 		template: '<h2>Error 404 al neki</h2>'
 	});
     
-	$stateProvider.state('categories',
+	$stateProvider.state('category',
 	{
-		url: '/categories',
-		templateUrl: 'templates/main.categories.html'
+		url: '/category/:id',
+		templateUrl: 'templates/categoryProducts.html',
+        controller: 'productsController'
 	});
     
 	$stateProvider.state('products',
@@ -33,6 +34,14 @@ app.config(function($stateProvider, $urlRouterProvider){
 		url: '/products/:id',
 		templateUrl: 'templates/product.html',
         controller: 'productController'
+	});
+    
+    
+    $stateProvider.state('category_products',
+	{
+		url: '/category_products/:id',
+		templateUrl: 'templates/products.html',
+        controller: 'productsController'
 	});
     
     $stateProvider.state('about',

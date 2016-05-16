@@ -25,10 +25,11 @@ app.config(function($stateProvider, $urlRouterProvider){
 		template: '<h2>Error 404 al neki</h2>'
 	});
     
-	$stateProvider.state('categories',
+	$stateProvider.state('category',
 	{
-		url: '/categories',
-		templateUrl: 'templates/main.categories.html'
+		url: '/category/:id',
+		templateUrl: 'templates/categoryProducts.html',
+        controller: 'productsController'
 	});
     
 	$stateProvider.state('products',
@@ -43,6 +44,14 @@ app.config(function($stateProvider, $urlRouterProvider){
 		url: '/products/:id',
 		templateUrl: 'templates/product.html',
         controller: 'productController'
+	});
+    
+    
+    $stateProvider.state('category_products',
+	{
+		url: '/category_products/:id',
+		templateUrl: 'templates/products.html',
+        controller: 'productsController'
 	});
     
     $stateProvider.state('about',
@@ -138,19 +147,27 @@ function ($resource) {
 
     return {
         getProducts:getProducts,
-        getProduct:getProduct
+        getProduct:getProduct,
+        getProductsByCategory:getProductsByCategory
     }
     
     function getProducts(){
         return $resource('http://smartninja.betoo.si/api/eshop/products').query({});
-    };
+    };    
     
     
     function getProduct(id){
         return $resource('http://smartninja.betoo.si/api/eshop/products/' + id.toString()).get({});
     };
+        
+    
+    function getProductsByCategory(category_id){
+        return $resource('http://smartninja.betoo.si/api/eshop/categories/' + category_id.toString() +'/products').query({});
+    };
+    
+    
     
 });
-app.controller('productsController', function ($scope, ProductFactory) {
-          $scope.products = ProductFactory.getProducts();
+app.controller('productsController', function ($scope, ProductFactory, $stateParams) {
+          $scope.products = ProductFactory.getProductsByCategory($stateParams.id);
 });

@@ -1,3 +1,3 @@
-app.controller('productsController', function ($scope, ProductFactory) {
-          $scope.products = ProductFactory.getProducts();
+app.controller('productsController', function ($scope, ProductFactory, $stateParams) {
+          $scope.products = ProductFactory.getProductsByCategory($stateParams.id);
 });
