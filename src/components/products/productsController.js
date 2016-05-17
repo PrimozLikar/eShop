@@ -1,3 +1,11 @@
 app.controller('productsController', function ($scope, ProductFactory, $stateParams) {
-          $scope.products = ProductFactory.getProductsByCategory($stateParams.id);
+    
+    var products = [];
+    products = ProductFactory.getProducts();
+    
+    $scope.getProducts = function()
+    {
+        return products;
+    };
+    
 });
