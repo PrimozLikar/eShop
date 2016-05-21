@@ -1,5 +1,13 @@
 app.controller('productController', function ($scope, ProductFactory, $stateParams) {
     
+    
+    $scope.product = ProductFactory.getProduct($stateParams.id);
+    
+    $scope.products = ProductFactory.getProducts($stateParams.id);
+    
+    
+    /*
+    
     $scope.geProduct = function($stateParams) {
         return ProductFactory.getProduct($stateParams.id);
     };
@@ -15,6 +23,6 @@ app.controller('productController', function ($scope, ProductFactory, $statePara
     
     $scope.geProductsByCategory = function($stateParams) {
         return ProductFactory.getProducts($stateParams.id);
-    };
+    };*/
     
 });

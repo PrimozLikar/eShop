@@ -6,9 +6,17 @@
                    </p> -->
                  
         <ul class="nav navbar-nav" ng-repeat="category in categories" >
-                     <li ng-class="{ active: isActive('/products/:" + {{ category.id }} + "'  )}">
-                <a ui-sref="products/:id"> {{ category.category }} </a>
-            </li>         
+           
+           
+<!--     <a ui-sref="detail({id: product.id})">Open detail view</a> -->
+         
+         
+          <!--   <li ng-class="{ active: isActive('/products')}"><a ui-sref="products">Products</a></li> -->  
+           
+            <li ng-class="{ active: isActive('/category_products/:{{ category.id }}')}">
+                <a ui-sref="category_products({ id: category.id })" > {{ category.id + " " + category.category }} </a>
+            </li>
+            
                       
            <!--  <li ><a ui-sref="category/:category">{{ category.category }}</a></li> -->
 

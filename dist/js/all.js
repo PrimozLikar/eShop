@@ -36,7 +36,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 	{
 		url: '/products',
 		templateUrl: 'templates/products.html',
-        controller: 'productsController'
+        controller: 'productController'
 	});
     
     $stateProvider.state('detail',
@@ -51,7 +51,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 	{
 		url: '/category_products/:id',
 		templateUrl: 'templates/products.html',
-        controller: 'productsController'
+        controller: 'productController'
 	});
     
     $stateProvider.state('about',
@@ -140,6 +140,14 @@ app.directive('mainNavigation', function(){
 
 app.controller('productController', function ($scope, ProductFactory, $stateParams) {
     
+    
+    $scope.product = ProductFactory.getProduct($stateParams.id);
+    
+    $scope.products = ProductFactory.getProducts($stateParams.id);
+    
+    
+    /*
+    
     $scope.geProduct = function($stateParams) {
         return ProductFactory.getProduct($stateParams.id);
     };
@@ -155,7 +163,7 @@ app.controller('productController', function ($scope, ProductFactory, $statePara
     
     $scope.geProductsByCategory = function($stateParams) {
         return ProductFactory.getProducts($stateParams.id);
-    };
+    };*/
     
 });
 angular.module('app').factory('ProductFactory', 
@@ -167,38 +175,28 @@ function ($resource) {
         getProduct:getProduct
     }
     
+    /*
     function getProducts(){
         
             return $resource('http://smartninja.betoo.si/api/eshop/products').query({});   
 
-    };  
+    };*/  
     
-    /*
-    function getProducts(categor_id){
-        if (categor_id == null) {
+    
+    function getProducts(id){
+        if (id == null) {
             return $resource('http://smartninja.betoo.si/api/eshop/products').query({});
         }
         else {
-            return $resource('http://smartninja.betoo.si/api/eshop/categories/' + category_id.toString() +'/products').query({});    
+            return $resource('http://smartninja.betoo.si/api/eshop/categories/' + id.toString() +'/products').query({});    
         }
-    };    */
+    }; 
     
     function getProduct(id){
-        if (id != "undefined") {
+        if (id != null) {
             return $resource('http://smartninja.betoo.si/api/eshop/products/' + id.toString()).get({});
         }
     };    
     
-    
-});
-app.controller('productsController', function ($scope, ProductFactory, $stateParams) {
-    
-    var products = [];
-    products = ProductFactory.getProducts();
-    
-    $scope.getProducts = function()
-    {
-        return products;
-    };
     
 });
